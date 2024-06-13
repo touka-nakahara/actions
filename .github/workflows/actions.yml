@@ -16,5 +16,5 @@ jobs:
         with:
           go-version-file: 'go.mod' 
       - run: go version
-      - run : ls
+      - run : go run ./cmd/main.go
 

@@ -1,7 +1,7 @@
 name: create_pull_request
 run-name: ${{ github.actor }} create pull request
 on: 
-  pull_request:
+  [pull_request, push]
     # branches:
     #   - 'main/**'
     # paths: # goの変更のみ実行

@@ -1,0 +1,19 @@
+name: github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: 
+  pull_request_target:
+    # branches:
+    #   - 'main/**'
+    paths: # goの変更のみ実行
+      - '**.go'
+jobs:
+  lint:
+    name: "lint go"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: 'go.mod' 
+      - run: go version
+

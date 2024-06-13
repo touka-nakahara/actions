@@ -19,4 +19,4 @@ jobs:
         with:
           install-go: false
       - name: Test with the Go CLI
-        run: go test
+        run: make test

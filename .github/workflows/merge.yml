@@ -11,11 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: 'go.mod' 
-      - uses: dominikh/staticcheck-action@v1.2.0
-        with:
-          install-go: false
+      - name: lint
+        uses: ./.github/actions/lint
       - name: Build
         run: make build

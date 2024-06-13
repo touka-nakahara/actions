@@ -18,3 +18,5 @@ jobs:
       - uses: dominikh/staticcheck-action@v1.2.0
         with:
           install-go: false
+      - name: Test with the Go CLI
+        run: make test

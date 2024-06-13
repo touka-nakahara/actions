@@ -4,8 +4,8 @@ on:
   pull_request:
     # branches:
     #   - 'main/**'
-    paths: # goの変更のみ実行
-      - '**.go'
+    # paths: # goの変更のみ実行
+    #   - '**.go'
 jobs:
   pr:
     name: "lint go"

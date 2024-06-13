@@ -15,13 +15,25 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: 'go.mod' 
-      - uses: dominikh/staticcheck-action@v1.2.0
+      # - uses: dominikh/staticcheck-action@v1.2.0
+      #   with:
+      #     install-go: false
+      # - uses: reviewdog/action-setup@v1
+      #   with:
+      #     reviewdog_version: latest
+      #   env:
+      #     REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - run: |
+      #     reviewdog -reporter=github-pr-check -runners=golint,govet
+        # run staticcheck
+      - uses: reviewdog/action-staticcheck@v1
         with:
-          install-go: false
-      - uses: reviewdog/action-setup@v1
-        with:
-          reviewdog_version: latest
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: |
-          reviewdog -reporter=github-pr-check -runners=golint,govet
+          github_token: ${{ secrets.github_token }}
+          # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
+          reporter: github-pr-review
+          # Report all results.
+          filter_mode: nofilter
+          # Exit with 1 when it find at least one finding.
+          fail_on_error: true
+      - name: Test go
+        run: go test

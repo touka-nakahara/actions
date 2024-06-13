@@ -3,14 +3,12 @@ description: "lint go program"
 runs: 
   using: "Composite" # 再利用用のaction登録
   steps:
-    - name: checkout
-      uses: actions/checkout@v4
     - name: setup go
       uses: actions/setup-go@v5
       with:
-          go-version-file: 'go.mod'
+        go-version-file: 'go.mod'
     - name: lint go
       uses: dominikh/staticcheck-action@v1.2.0
-        with:
-          install-go: false
+      with:
+        install-go: false
 

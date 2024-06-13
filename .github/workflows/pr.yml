@@ -13,6 +13,6 @@ jobs:
     steps:
       - run: ls .github/actions
       - name: lint
-        uses: actions/lint
+        uses: ./.github/actions/lint
       - name: Test with the Go CLI
         run: make test
